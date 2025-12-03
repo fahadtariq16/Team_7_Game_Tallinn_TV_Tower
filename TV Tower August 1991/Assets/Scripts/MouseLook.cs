@@ -1,32 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class MouseLook : MonoBehaviour
 {
-    public float mouseSensitivity = 120f;
-    public Transform playerBody;
+    public float sensitivity = 200f;
+    public Transform playerBody; // <-- You must assign this
 
-    private float xRotation = 0f;
+    float xRotation = 0f;
 
     void Start()
     {
-        //locks the cursor in, so it won't leave the game window
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Update()
     {
-        //look controls, updates the coordinates based on mouse movement
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
 
+        // Vertical rotation (camera)
         xRotation -= mouseY;
-        //clamps the vertical look to prevent flipping
         xRotation = Mathf.Clamp(xRotation, -80f, 80f);
-
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        playerBody.Rotate(Vector3.up * mouseX);
+
+        // Horizontal rotation (player object)
+        if (playerBody != null)
+            playerBody.Rotate(Vector3.up * mouseX);
     }
 }
 
