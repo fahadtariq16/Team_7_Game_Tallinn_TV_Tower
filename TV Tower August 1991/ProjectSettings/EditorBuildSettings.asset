@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Intro-Scene.unity
     guid: e06131033e28d32478174008933d1f0e
   - enabled: 1
-    path: Assets/Scenes/Test.unity
+    path: Assets/Scenes/TestLevel.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Endscreen-Scene.unity
     guid: 7b9c56c4eeb907242930169bd76c1638
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 18cc65861fa446d408d26fbe3a9e4816
   m_configObjects: {}
