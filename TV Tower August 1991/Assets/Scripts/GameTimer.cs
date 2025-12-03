@@ -21,6 +21,15 @@ public class GameTimer : MonoBehaviour
 
     void Update()
     {
+
+        string currentScene = SceneManager.GetActiveScene().name;
+
+
+        if (Input.GetKeyDown(KeyCode.Return) && currentScene == "GameOver") // Enter-Taste (Return)
+        {
+            SceneManager.LoadScene("TestLevel");
+        }
+
         if (timerRunning)
         {
             timeRemaining -= Time.deltaTime;
@@ -31,11 +40,13 @@ public class GameTimer : MonoBehaviour
             timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
             // Zeit abgelaufen?
-            if (timeRemaining <= 0)
+            if (timeRemaining <= 0 )
             {
                 GameOver();
             }
         }
+
+       
     }
 
     void GameOver()
