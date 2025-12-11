@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class MatchboxLogic : MonoBehaviour
 {
     public bool matchbox = false;
-
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +30,7 @@ public class MatchboxLogic : MonoBehaviour
         {
             if (hit.collider.gameObject.CompareTag("Pickable")) //if the object has the "Pickable" tag
             {
+               
                 matchbox = true;
                 hit.collider.gameObject.SetActive(false); //disable the picked up object
             }
@@ -38,7 +39,7 @@ public class MatchboxLogic : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Door"))
+        if (other.CompareTag("Door") && matchbox)
         {
                 int currentIndex = SceneManager.GetActiveScene().buildIndex;
                 SceneManager.LoadScene("Endscreen-Scene");
